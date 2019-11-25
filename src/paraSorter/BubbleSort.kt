@@ -2,28 +2,27 @@ package paraSorter
 
 import java.util.Collections.swap
 
-class BubbleSort(inputData: Array<Int>) : Sorter(inputData) {
+class BubbleSort(inputData: MutableList<Int>) : Sorter(inputData) {
     override var sortType: String
-        get() = sortType
-        set(value) {
-            sortType = value
-        }
+        get() = "BubbleSort"
+        set(value) {}
 
     override fun startSort() {
+        val data : MutableList<Int> = inputData
         var swapped : Boolean
-        val data : MutableList<Int> = inputData.toMutableList()
         do {
             swapped = false
             for (i in 0..data.size - 2){
+                if (stopSorting) {
+                    inputData = data
+                    return
+                }
                 if (data[i] > inputData[i + 1]){
                     swap(data, i, i + 1)
                     swapped = true
                 }
             }
         } while (swapped && !stopSorting)
-    }
-
-    override fun stopSort() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        inputData = data
     }
 }
