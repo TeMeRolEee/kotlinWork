@@ -47,8 +47,8 @@ fun main(args: Array<String>) {
     cliParser.main(args)
     val random = Random(Instant.now().toEpochMilli())
     val arr: List<Int> = (1..100000).map { random.nextInt() }
-    val path : String = Paths.get("").toAbsolutePath().toString() + File.separator + "results" + File.separator
-    val fileName : String = "ORIGINAL_" + Time.from(Instant.now()).toInstant().epochSecond + ".txt"
+    val path: String = Paths.get("").toAbsolutePath().toString() + File.separator + "results" + File.separator
+    val fileName: String = "ORIGINAL_" + Time.from(Instant.now()).toInstant().epochSecond + ".txt"
     if (!Files.exists(Paths.get(path).toAbsolutePath())) {
         Files.createDirectories(Paths.get(path).toAbsolutePath())
     }
