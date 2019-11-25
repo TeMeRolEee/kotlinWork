@@ -23,13 +23,29 @@ import kotlin.random.Random
 
 
 class CLIParser : CliktCommand() {
-    public val insertionSort: Boolean by option("-i", "--insert", help = "Enable / Disable insertionSort").flag(default = false)
-    public val bubbleSort: Boolean by option("-bb", "--bubble", help = "Enable / Disable bubbleSort").flag(default = false)
+    public val insertionSort: Boolean by option(
+        "-i",
+        "--insert",
+        help = "Enable / Disable insertionSort"
+    ).flag(default = false)
+    public val bubbleSort: Boolean by option(
+        "-bb",
+        "--bubble",
+        help = "Enable / Disable bubbleSort"
+    ).flag(default = false)
     public val heapSort: Boolean by option("-hp", "--heap", help = "Enable / Disable heapSort").flag(default = false)
     public val quickSort: Boolean by option("-q", "--quick", help = "Enable / Disable quickSort").flag(default = false)
-    public val bucketSort: Boolean by option("-bk", "--bucket", help = "Enable / Disable bucketSort").flag(default = false)
+    public val bucketSort: Boolean by option(
+        "-bk",
+        "--bucket",
+        help = "Enable / Disable bucketSort"
+    ).flag(default = false)
 
-    public val dataSize : Int by option("-s", "--size", help = "Size of the array that will be created and processed").int().default(100000)
+    public val dataSize: Int by option(
+        "-s",
+        "--size",
+        help = "Size of the array that will be created and processed"
+    ).int().default(100000)
 
     init {
         versionOption("1.0")
@@ -66,9 +82,9 @@ fun main(args: Array<String>) {
     if (cliParser.bubbleSort) {
         val bubbleSort = BubbleSort(inputData.toMutableList())
         val bubbleJob = thread() {
-            val begin : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val begin: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             bubbleSort.startSort()
-            val end : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val end: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             println("JOB:\tBUBBLE\t TIME:\t" + (end - begin) + "ms\t START TIME:\t" + begin + "\t END TIME\t" + end)
             bubbleSort.writeResultToFile()
         }
@@ -76,9 +92,9 @@ fun main(args: Array<String>) {
     if (cliParser.insertionSort) {
         val insertionSort = InsertionSort(inputData.toMutableList())
         val insertionJob = thread() {
-            val begin : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val begin: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             insertionSort.startSort()
-            val end : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val end: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             println("JOB:\tINSERTION\t TIME:\t" + (end - begin) + "ms\t START TIME:\t" + begin + "\t END TIME\t" + end)
             insertionSort.writeResultToFile()
         }
@@ -87,9 +103,9 @@ fun main(args: Array<String>) {
     if (cliParser.bucketSort) {
         val bucketSort = BucketSort(inputData.toMutableList())
         val bucketJob = thread() {
-            val begin : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val begin: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             bucketSort.startSort()
-            val end : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val end: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             println("JOB:\tBUCKET\t TIME:\t" + (end - begin) + "ms\t START TIME:\t" + begin + "\t END TIME\t" + end)
             bucketSort.writeResultToFile()
         }
@@ -97,9 +113,9 @@ fun main(args: Array<String>) {
     if (cliParser.heapSort) {
         val heapSort = HeapSort(inputData.toMutableList())
         val heapJob = thread() {
-            val begin : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val begin: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             heapSort.startSort()
-            val end : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val end: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             println("JOB:\tHEAP\t TIME:\t" + (end - begin) + "ms\t START TIME:\t" + begin + "\t END TIME\t" + end)
             heapSort.writeResultToFile()
         }
@@ -108,9 +124,9 @@ fun main(args: Array<String>) {
     if (cliParser.quickSort) {
         val quickSort = QuickSort(inputData.toMutableList())
         val quickJob = thread() {
-            val begin : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val begin: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             quickSort.startSort()
-            val end : Long = Time.from(Instant.now()).toInstant().toEpochMilli()
+            val end: Long = Time.from(Instant.now()).toInstant().toEpochMilli()
             println("JOB:\tQUICK\t TIME:\t" + (end - begin) + "ms\t START TIME:\t" + begin + "\t END TIME\t" + end)
             quickSort.writeResultToFile()
         }
