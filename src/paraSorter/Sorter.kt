@@ -15,7 +15,7 @@ public abstract class Sorter(var inputData: MutableList<Int>) {
 
     fun writeResultToFile() {
         val path: String = Paths.get("").toAbsolutePath().toString() + File.separator + "results" + File.separator
-        val fileName: String = sortType + "_" + Time.from(Instant.now()).toInstant().epochSecond + ".txt"
+        val fileName: String = sortType + "_" + Time.from(Instant.now()).toInstant().toEpochMilli() + ".txt"
         if (!Files.exists(Paths.get(path).toAbsolutePath())) {
             Files.createDirectory(Paths.get(path).toAbsolutePath())
         }

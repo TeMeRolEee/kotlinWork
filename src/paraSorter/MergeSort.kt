@@ -10,6 +10,9 @@ class MergeSort(inputData: MutableList<Int>) : Sorter(inputData) {
     override fun startSort() {
         val data: MutableList<Int> = inputData
         sortArrayPiece(data, 0, data.size - 1)
+        inputData.forEach {
+            println(it.toString())
+        }
         inputData = data
     }
 
@@ -19,6 +22,7 @@ class MergeSort(inputData: MutableList<Int>) : Sorter(inputData) {
             return
         }
         val middleElementIndex = floor((startIndex + endIndex) / 2.0).toInt()
+        //println(pieceSize.toString() + " " + startIndex.toString() + " " + middleElementIndex.toString() + " " + endIndex.toString())
         sortArrayPiece(data, startIndex, middleElementIndex)
         sortArrayPiece(data, middleElementIndex + 1, endIndex)
         merge(data, startIndex, middleElementIndex, endIndex)

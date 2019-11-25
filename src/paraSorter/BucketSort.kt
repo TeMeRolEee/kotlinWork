@@ -22,9 +22,6 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
                 valueIndex = data.size - 1
             }
             sortArray[valueIndex].add(value)
-            if (stopSorting) {
-                return
-            }
         }
 
         var outputArrayIndex = 0;
@@ -44,5 +41,6 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
                 }
             }
         }
+        inputData = data
     }
 }

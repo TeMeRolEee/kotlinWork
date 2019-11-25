@@ -6,7 +6,7 @@ class InsertionSort(inputData: MutableList<Int>) : Sorter(inputData) {
         set(value) {}
 
     override fun startSort() {
-        val data: MutableList<Int> = inputData
+        var data: MutableList<Int> = inputData
         for (j in 1 until data.size) {
             var i = j - 1
             val processedValue = data[j]
