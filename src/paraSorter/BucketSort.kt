@@ -13,7 +13,6 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
         val data: MutableList<Int> = inputData
         val numberOfBuckets = if (data.size > 100) floor(data.size / 10.0).toInt() else 10
         val sortArray = Array<LinkedList<Int>>(numberOfBuckets + 1) { i -> LinkedList() }
-        println(sortArray.size)
         val maxArrayValue = data.max()
 
         for (i in 0 until data.size) {
