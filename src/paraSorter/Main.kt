@@ -14,10 +14,17 @@ import kotlin.coroutines.*
 import kotlin.experimental.*
 
 class CLIParser : CliktCommand() {
-    val fileInput : String by argument(help = "Path of the file that will be processed")
-    val bubbleSort : Boolean by option("-b", "--bubble", help = "Bubble sort").flag(default = false)
-    val mergeSort : Boolean by option("-m", "-merge", help = "Mergesort").flag(default = false)
-    val insertionSort : Boolean by option("-i", "--insertion").flag(default = false)
+    val fileInput: String by argument(help = "Path of the file that will be processed")
+    val insertionSort: Boolean by option(
+        "-i",
+        "--insertion",
+        help = "Enable / Disable insertion sort"
+    ).flag(default = false)
+    val countingSort: Boolean by option("-c", "-counting", help = "Enable / Disable countingSort").flag(default = false)
+    val bubbleSort: Boolean by option("-b", "--bubble", help = "Enable / Disable bubbleSort").flag(default = false)
+    val mergeSort: Boolean by option("-m", "--merge", help = "Enable / Disable mergeSort").flag(default = false)
+    val quickSort: Boolean by option("-q", "--quick", help = "Enable / Disable quickSort").flag(default = false)
+    val bucketSort: Boolean by option("-b", "--bucket", help = "Enable / Disable bucketSort").flag(default = false)
 
     init {
         versionOption("0.2")
@@ -29,7 +36,7 @@ class CLIParser : CliktCommand() {
 
 }
 
-fun main(args : Array<String>) {
-    val cliParser : CLIParser = CLIParser()
+fun main(args: Array<String>) {
+    val cliParser: CLIParser = CLIParser()
     cliParser.main(args)
 }
