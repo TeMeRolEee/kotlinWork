@@ -6,8 +6,9 @@ import java.time.Instant
 import kotlin.coroutines.*
 import kotlin.experimental.*
 
-abstract class Sorter(var inputData : Array<Int>) {
+public abstract class Sorter(var inputData : Array<Int>) {
     abstract var sortType : String
+    public var stopSorting : Boolean = false
 
     abstract fun startSort()
     abstract fun stopSort()
