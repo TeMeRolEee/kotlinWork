@@ -1,6 +1,7 @@
 package paraSorter
 
 import java.util.*
+import kotlin.math.absoluteValue
 import kotlin.math.floor
 
 class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
@@ -11,13 +12,17 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
     override fun startSort() {
         val data: MutableList<Int> = inputData
         val numberOfBuckets = if (data.size > 100) floor(data.size / 10.0).toInt() else 10
-        val sortArray = Array<LinkedList<Int>>(numberOfBuckets) { LinkedList() }
+        val sortArray = Array<LinkedList<Int>>(numberOfBuckets + 1) { i -> LinkedList()}
+        println(sortArray.size)
         val maxArrayValue = data.max()
 
         for (i in 0 until data.size) {
             val value: Int = data[i]
-            var valueIndex = floor((numberOfBuckets * (value / maxArrayValue!!)).toDouble()).toInt()
+            var valueIndex = floor((numberOfBuckets * (value / maxArrayValue!!)).toDouble()).toInt().absoluteValue
+            //println(valueIndex)
+            //println(data.size)
             if (valueIndex == data.size) {
+                //println("TRUE")
                 valueIndex = data.size - 1
             }
             sortArray[valueIndex].add(value)
