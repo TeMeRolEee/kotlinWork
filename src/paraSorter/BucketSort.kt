@@ -19,10 +19,7 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
         for (i in 0 until data.size) {
             val value: Int = data[i]
             var valueIndex = floor((numberOfBuckets * (value / maxArrayValue!!)).toDouble()).toInt().absoluteValue
-            //println(valueIndex)
-            //println(data.size)
             if (valueIndex == data.size) {
-                //println("TRUE")
                 valueIndex = data.size - 1
             }
             sortArray[valueIndex].add(value)
@@ -35,7 +32,7 @@ class BucketSort(inputData: MutableList<Int>) : Sorter(inputData) {
         for (list in sortArray) {
             if (list.size > 0) {
                 val arrayFromList = Array<Int>(list.size) { i -> list[i] }
-                val insertionSort: InsertionSort = InsertionSort(arrayFromList.toMutableList())
+                val insertionSort = InsertionSort(arrayFromList.toMutableList())
                 insertionSort.startSort()
 
                 for (value in insertionSort.inputData) {
